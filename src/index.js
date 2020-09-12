@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import './index.css';
+import thunk from 'redux-thunk'
 import App from './components/App';
 // import movies from './reducers';
 import rootReducer from './reducers'
@@ -20,16 +21,27 @@ import rootReducer from './reducers'
 
 // Modified Middleware
 const logger = ({dispatch, getState}) => (next) => (action) =>{
-   // middleware
+   // logger
+   if(typeof action !=='function'){
    console.log('ACTION_TYPE = ',action.type);
+   }
    next(action);
 }
-
-const store  = createStore(rootReducer , applyMiddleware(logger))
+// const thunk = ({dispatch, getState}) => (next) => (action) =>{
+//   // middleware
+//   if(typeof action ==='function'){
+//     action(dispatch);
+//     return;
+//   }
+//   console.log('ACTION_TYPE = ',action.type);
+//   next(action);
+// }
+const store  = createStore(rootReducer , applyMiddleware(logger, thunk))
 // console.log('store',store);
 // console.log('before state',store.getState());
 
 // store.dispatch({
+
 //   type:'ADD_MOVIES',
 //   movies:[{name:'Superman'}]
 // })
