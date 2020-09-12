@@ -64,6 +64,7 @@ const initialRootState = {
 // }
 
 export default combineReducers({
+    
     movies,
     search
 })
