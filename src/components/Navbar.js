@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import {handleMovieSearch, addMovieToList} from '../actions'
-import { connect, StoreContext } from '..';
+import { connect} from 'react-redux';
 class Navbar extends React.Component {
 
   constructor (props) {
